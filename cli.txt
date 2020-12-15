@@ -1,0 +1,61 @@
+var readlineSync = require('readline-sync');
+var chalk=require('chalk');
+var username=readlineSync.question("whats your name? ")
+question1=" Do you know kamali? (yes/no)"
+answer="yes"
+console.log("welcome "+ username)
+
+var useranswer = readlineSync.question(question1)
+  if (useranswer==answer)
+  {
+var score=0;
+function play(question,answer){
+  var useranswer = readlineSync.question(question)
+  if (useranswer.toUpperCase()==answer.toUpperCase()){
+    console.log(chalk.green("Right!"))
+    score=score+1
+  }
+  else{
+ console.log(chalk.red("Wrong!"))
+  }
+  console.log(chalk.yellow("your score is "+score))
+  console.log("---")
+  
+
+}
+var quizques=[
+  {
+  question: `
+	whats her hobby?
+	a: Reading
+	b: cooking
+	c: Rachel\n`,
+		answer: "a"
+	},
+	{
+		question: `
+	whats her fav colour?
+	a: red
+	b: skyblue
+    c: pink\n`,
+		answer: "b"
+	},
+]
+
+for(i=0;i<quizques.length;i++){
+  currentone=quizques[i];
+
+play(currentone.question,currentone.answer);
+}
+
+if(score>=1){
+console.log(chalk.bold.rgb(10, 100, 200)("yay!you rocking man "));
+console.log(chalk.yellow("u are promoted to level 2"))
+}
+else{
+console.log(chalk.red("next time betterluck dude!"))
+}
+  }
+  else{
+    console.log("This quiz is for her friends only")
+  }
